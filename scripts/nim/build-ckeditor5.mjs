@@ -8,6 +8,7 @@
 /* eslint-env node */
 
 import { rm, copyFile } from 'fs/promises';
+import { readFileSync, writeFileSync } from 'fs';
 import upath from 'upath';
 import chalk from 'chalk';
 import { build } from '@ckeditor/ckeditor5-dev-build-tools';
@@ -17,12 +18,19 @@ function dist( path ) {
 	return upath.join( CKEDITOR5_ROOT_PATH, 'dist', path );
 }
 
+function root(path) {
+	return upath.join( CKEDITOR5_ROOT_PATH, path );
+}
+
 ( async () => {
 	/**
 	 * Paths to the `tsconfig` and `banner` files relative to the root of the repository.
 	 */
 	const tsconfig = 'tsconfig.dist.ckeditor5.json';
 	const banner = 'scripts/nim/banner.mjs';
+	const packageJson = JSON.parse(readFileSync( root('package.json'), 'utf8'));
+	console.log( chalk.yellow('Current version is '+packageJson.version) );
+	writeFileSync (dist( 'ckeditor5.js' ), `console.log("CKeditor-TPsoft.org: ${packageJson.version}");`, {flag: 'a+'});
 
 	/**
 	 * Step 1
@@ -42,6 +50,7 @@ function dist( path ) {
 		 * We don't want to repeat this in other steps.
 		 */
 		clean: true,
+		declarations: true,
 		translations: 'packages/**/*.po'
 	} );
 
@@ -67,6 +76,8 @@ function dist( path ) {
 	await copyFile( dist( 'tmp/ckeditor5.js.map' ), dist( 'ckeditor5.js.map' ) );
 	await rm( dist( 'tmp' ), { recursive: true } );
 
+	writeFileSync (dist( 'ckeditor5.js' ), `console.log("CKeditor-TPsoft.org: ${packageJson.version}");`, {flag: 'a+'});
+
 	/**
 	 * Step 3
 	 */
@@ -82,4 +93,7 @@ function dist( path ) {
 		name: 'CKEDITOR',
 		external: []
 	} );
+
+	writeFileSync (dist( 'browser/ckeditor5.js' ), `console.log("CKeditor-TPsoft.org: ${packageJson.version}");`, {flag: 'a+'});
+
 } )();
