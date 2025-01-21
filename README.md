@@ -16,6 +16,7 @@ CKEditor&nbsp;5 is a modern JavaScript rich-text editor with MVC architecture, c
 ## Table of contents<!-- omit in toc -->
 
 - [Quick start](#quick-start)
+- [TPsoft.org quick start](#tpsoft-quick-start)
 	- [CKEditor 5 Builder](#ckeditor-5-builder)
 	- [TypeScript support](#typescript-support)
 	- [CKEditor 5 advanced installation](#ckeditor-5-advanced-installation)
@@ -33,6 +34,28 @@ CKEditor&nbsp;5 is a modern JavaScript rich-text editor with MVC architecture, c
 ## Quick start
 
 Refer to the [Quick Start](https://ckeditor.com/docs/ckeditor5/latest/getting-started/installation/quick-start.html) guide to learn more about CKEditor&nbsp;5 installation.
+
+## TPsoft quick start
+
+First steps for build and using.
+
+### First install required modules and building
+1. Download or clone GIT repository
+2. Install `nodejs` and `npm`
+3. Choose root directory of repository and run `npm install` and then `npm run build:dist` for build package in TypeScript
+4. Choose directory `tests/browser/` and run `npm install` and then `npm run build` for compile to Javascript
+5. Super, you get compiled CKeditor5 in one file `tests/browser/dist/main.js`
+6. Create new HTML file and include `main.js`, for example see `test/browser/index.html`
+
+### New changes and upgrade
+1. All code of CKeditor is in directory `packages/`, the code is written in TypeScript
+2. Upgrade version of package in `package.json`
+3. After changes run in root directory `npm run build:dist` for build package in TypeScript
+4. After build package choose directory `tests/browser/`
+5. Code for using CKeditor as instance in browser is in file `tests/browser/index.js`
+6. After rebuild package or any changes in `tests/browser/` run `npm run build` for compile to Javascript
+7. Super, you get compiled CKeditor5 in one file `tests/browser/dist/main.js`
+8. Don't forget to commit code changes
 
 ### CKEditor 5 Builder
 
