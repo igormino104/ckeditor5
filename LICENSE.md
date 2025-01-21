@@ -2,7 +2,7 @@ Software License Agreement
 ==========================
 
 **CKEditor&nbsp;5** (https://github.com/ckeditor/ckeditor5)<br>
-Copyright (c) 2003–2025, [CKSource Holding sp. z o.o.](https://cksource.com) All rights reserved.
+Copyright (c) 2003–2025, [CKSource Holding sp. z o.o.](https://cksource.com) All rights reserved.<br>
 Copyright (c) 2025, [TPsoft.org](https://www.tpsoft.org) All rights reserved.
 
 Licensed under a dual-license model, this software is available under:
